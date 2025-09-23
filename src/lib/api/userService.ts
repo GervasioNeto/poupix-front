@@ -28,3 +28,9 @@ export const updateUser = async (id: string, user: Partial<User>): Promise<User>
 export const deleteUser = async (id: string): Promise<void> => {
   await axios.delete(`${API_URL}/${id}`);
 };
+
+// Função para login
+export const loginUser = async (email: string, password: string): Promise<User> => {
+  const { data } = await axios.post<User>(`${API_URL}/login`, { email, password });
+  return data;
+};
